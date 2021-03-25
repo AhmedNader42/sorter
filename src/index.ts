@@ -1,30 +1,14 @@
-class Sorter {
-    constructor(public collection: number[] | string) {}
+import { NumbersCollection } from "./NumbersCollection";
+import { CharactersCollection } from "./CharactersCollection";
+import { Sorter } from "./Sorter";
 
-    sort(): void {
-        const { length } = this.collection;
+const nc = new NumbersCollection([100, 10, -1, 2, -2]);
+const cc = new CharactersCollection("Hello World AA");
 
-        for (let i = 0; i < length; i++) {
-            for (let j = 0; j < length - i - 1; j++) {
-                // Type guard
-                if (this.collection instanceof Array) {
-                    // this.collection.
-                    // For sorting numbers
-                    if (this.collection[j] > this.collection[j + 1]) {
-                        const temp = this.collection[j];
-                        this.collection[j] = this.collection[j + 1];
-                        this.collection[j + 1] = temp;
-                    }
-                }
+const nsorter = new Sorter(nc);
+nsorter.sort();
+console.log(nc);
 
-                // For sorting string
-                if (typeof this.collection === "string") {
-                }
-            }
-        }
-    }
-}
-
-const sorter = new Sorter([1, 10, -1, 2, 3]);
-sorter.sort();
-console.log(sorter.collection);
+const cSorted = new Sorter(cc);
+cSorted.sort();
+console.log(cc);
